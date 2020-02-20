@@ -17,37 +17,44 @@ namespace ConsoleApp1
             int Wylosowana = los.Next(1, 101);
             Console.WriteLine(Wylosowana);
             Console.WriteLine("Wylosowałem liczbę od 1 do 100.\nOdgadnij ją.");
-           
-            //
-            //2. człowiek zgaduje
-            //
-           
-            Console.Write("Podaj odpowiedź: ");
-            int Propozycja = int.Parse(Console.ReadLine());
 
-            //
-            //3. komputer ocenia
-            //
-            
-            if (Propozycja < Wylosowana)
+            bool odgadniete = false;
+            // dopuki nie odgadniesz
+            while (!odgadniete) 
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Za mało");
-                Console.ResetColor();
-            }
-            else if (Propozycja > Wylosowana)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Za dużo");
-                Console.ResetColor();
-            }
-            else
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("Trafiono");
-                Console.ResetColor();
+                //
+                //2. człowiek zgaduje
+                //
+
+                Console.Write("Podaj odpowiedź: ");
+                int Propozycja = int.Parse(Console.ReadLine());
+
+                //
+                //3. komputer ocenia
+                //
+
+                if (Propozycja < Wylosowana)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Za mało");
+                    Console.ResetColor();
+                }
+                else if (Propozycja > Wylosowana)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Za dużo");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Trafiono");
+                    Console.ResetColor();
+                    odgadniete = true;
+                }
             }
 
+            Console.WriteLine("Dobra robota");
         }
     }
 }
