@@ -12,11 +12,14 @@ namespace ConsoleApp1
             //
             //1. komputer losuje
             //
-           
+            #region losowanie
             Random los = new Random(); // Tworzę obiekt typu Random
             int Wylosowana = los.Next(1, 101);
+#if DEBUG           
             Console.WriteLine(Wylosowana);
+#endif
             Console.WriteLine("Wylosowałem liczbę od 1 do 100.\nOdgadnij ją.");
+            #endregion
 
             bool odgadniete = false;
             // dopuki nie odgadniesz
@@ -27,8 +30,8 @@ namespace ConsoleApp1
                 //
 
                 Console.Write("Podaj odpowiedź: ");
-                int Propozycja = int.Parse(Console.ReadLine());
 
+                int Propozycja = int.Parse(Console.ReadLine());
                 //
                 //3. komputer ocenia
                 //
