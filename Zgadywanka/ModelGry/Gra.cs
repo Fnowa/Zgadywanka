@@ -18,6 +18,7 @@ namespace ModelGry
             Random rnd = new Random();
             wylosowana = rnd.Next(a, b + 1);
             Stan = StanGry.Trwa;
+            HistoriaGry = new List<Ruch>();
         }
 
         public int Wylosowana
@@ -32,15 +33,22 @@ namespace ModelGry
 
         public ODP Odpowiedz(int propozycja)
         {
-            if (wylosowana < propozycja)
+
+            if (wylosowana > propozycja)
+            {
+                HistoriaGry.Add(new Ruch(propozycja, ODP.ZaMalo));
                 return ODP.ZaMalo;
-            else if (wylosowana > propozycja)
+            }
+            else if (wylosowana < propozycja)
+            {
+                HistoriaGry.Add(new Ruch(propozycja, ODP.ZaDuzo));
                 return ODP.ZaDuzo;
+            }
             else
             {
+                HistoriaGry.Add(new Ruch(propozycja, ODP.Trafiono));
                 Stan = StanGry.Zakonczona;
                 return ODP.Trafiono;
-
             }
         }
 
